@@ -3,6 +3,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include "logic.h"
+#include <vector>
 
 namespace Ui {
 class Decode;

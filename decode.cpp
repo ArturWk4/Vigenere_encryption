@@ -6,6 +6,8 @@ Decode::Decode(QWidget *parent) :
     ui(new Ui::Decode)
 {
     ui->setupUi(this);
+    ui->lineEditCode->setValidator(new QRegExpValidator(getValidWord(), this));
+    ui->lineEditKey->setValidator(new QRegExpValidator(getValidWord(), this));
 }
 
 Decode::~Decode()
@@ -17,8 +19,10 @@ void Decode::on_pushButton_decode_clicked()
 {
     if(fieldsIsFill(this))
     {
-
-        QMessageBox::information(this, "Дешифрование", "Слово");
+        std::vector<QString> table;
+        createVigenereTable(table);
+        QString result = decode(table, ui->lineEditCode->text(), ui->lineEditKey->text());
+        QMessageBox::information(this, "Дешифрование", result);
     }
     else
     {

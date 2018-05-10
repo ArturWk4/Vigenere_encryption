@@ -18,5 +18,5 @@ void createVigenereTable(std::vector<QString>& english_table);
 QString completeKey( QString& key, const int word_size);
 int findWordIndex(const QString& str, QChar value);
 QString encryption(std::vector<QString> table, QString word, QString _key);
-
+QString decode(std::vector<QString> table, QString code, QString _key);
 #endif // LOGIC_H

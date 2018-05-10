@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include "logic.h"
 #include <vector>
+
 namespace Ui {
 class Encryption;
 }

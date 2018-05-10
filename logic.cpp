@@ -81,3 +81,20 @@ QString encryption(std::vector<QString> table, QString word, QString _key)
     }
     return result;
 }
+
+QString decode(std::vector<QString> table, QString code, QString _key)
+{
+    int code_size = code.size();
+    QString key = completeKey(_key, code_size);
+    QString result;
+    int code_index = 0;
+    int key_index = 0;
+
+    for(int i = 0; i < code_size; ++i)
+    {
+        key_index = findWordIndex(table.at(0), key[i]);
+        code_index = findWordIndex( table.at(key_index), code[i]);
+        result.push_back( table.at(0).at(code_index) );
+    }
+    return result;
+}
